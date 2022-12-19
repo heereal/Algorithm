@@ -1,3 +1,3 @@
 function solution(n, k) {
-    return 12000*n + 2000*k - Math.floor((12000*n)/120000)*2000
+    return 12000*n + 2000*k - Math.floor(n/10)*2000
 }
