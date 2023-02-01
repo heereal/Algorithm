@@ -1,7 +1,7 @@
 function solution(i, j, k) {
-    let array = [];
-    for (i = i; i <= j; i++) {
-        array.push(...i.toString().split(""))
+    let answer = "";
+    for (i; i <= j; i++) {
+        answer += i
     }
-    return array.filter((num) => num === k.toString()).length
+    return answer.split(k).length-1
 }
