@@ -1,5 +1,3 @@
 function solution(x) {
-    let answer = 0;
-    x.toString().split("").forEach((num) => answer += parseInt(num));
-    return x % answer === 0 ? true : false;
+    return x % x.toString().split("").reduce((acc, cur) => parseInt(acc) + parseInt(cur), 0) === 0;
 }
