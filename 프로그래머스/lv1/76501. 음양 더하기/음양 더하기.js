@@ -1,3 +1,3 @@
 function solution(absolutes, signs) {
-    return absolutes.map((num, i) => signs[i] && num ? num : -num).reduce((acc, cur) => acc + cur, 0);
+    return absolutes.reduce((acc, cur, i) => acc + ( signs[i] ? cur : -cur ), 0);
 }
