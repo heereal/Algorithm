@@ -1,11 +1,4 @@
 function solution(numbers) {
-    let answer = Number.MIN_SAFE_INTEGER;
-    for ( i = 0; i < numbers.length; i++ ) {
-        for ( j = 0; j < numbers.length; j++ ) {
-            if ( i !== j && numbers[i] * numbers[j] >= answer ) {
-                answer = numbers[i] * numbers[j]
-            }
-        }
-    }
-    return answer;
+    numbers.sort((a,b) => a - b);
+    return Math.max(numbers[0]*numbers[1], numbers[numbers.length -1]*numbers[numbers.length -2])
 }
