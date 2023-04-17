@@ -1,11 +1,12 @@
 function solution(left, right) {
-    let array = [];
+    let answer = 0;
     for (let i = left; i <= right; i++) {
         let count = 0;
         for (let z = 0; z <= i; z++) {
             if (i % z === 0) count += 1;
         }
-        array.push(count);
+        if (count % 2 === 0) answer += i;
+        if (count % 2 !== 0) answer -= i;
     }
-    return array.reduce((acc, cur, index) => acc + (cur % 2 === 0 ? index + left : -(index + left)), 0);
+    return answer;
 }
