@@ -1,6 +1,5 @@
 function solution(s) {
     let array = s.split(" ");
-    console.log(array)
     let answer = [];
     for (const word of array) {
         let temp = "";
