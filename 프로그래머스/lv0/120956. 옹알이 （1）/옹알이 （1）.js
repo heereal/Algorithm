@@ -2,12 +2,11 @@ function solution(babbling) {
     let array = ["aya", "ye", "woo", "ma"];
     let answer = 0;
     for (const babble of babbling) {
-        let dd = babble;
+        let word = babble;
         for (const say of array) {
-            dd = dd.replaceAll(say, 1)
-            console.log(typeof dd)
+            word = word.replaceAll(say, 1)
         }
-        if (/^1*$/.test(dd)) answer++;
+        if (/^1*$/.test(word)) answer++;
     }
     return answer;
 }
