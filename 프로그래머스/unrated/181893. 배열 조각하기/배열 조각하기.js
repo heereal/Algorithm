@@ -1,8 +1,8 @@
 function solution(arr, query) {
-    let answer = [...arr];
-    for (const i in query) {
-        if (i % 2 === 0 ) answer = answer.slice(0, query[i] + 1);
-        if (i % 2 !== 0 ) answer = answer.slice(query[i]);
-    }
-    return answer;
+  let start = 0;
+  let end = arr.length;
+  for (let i = 0; i < query.length; i++) {
+    i % 2 ? start += query[i] : end = start + query[i];
+  }
+  return arr.slice(start, end + 1);
 }
