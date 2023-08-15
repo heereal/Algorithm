@@ -4,5 +4,5 @@ function solution(strArr) {
         arr[str.length - 1]++;
         return arr;
     }, Array(sortedArr[sortedArr.length - 1].length).fill(0))
-    return numArr.sort((a, b) => a - b)[numArr.length - 1];
+    return Math.max(...numArr);
 }
