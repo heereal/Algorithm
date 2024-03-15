@@ -1,13 +1,11 @@
-import math
+H, M = map(int, input().split())
+timer = int(input())
 
-h, m = map(int, input().split())
-time = int(input())
+total_minute = M + timer
+H += total_minute // 60
+M = total_minute % 60
 
-time += m
-h += math.floor(time / 60)
-m = time % 60
+if H > 23:
+    H -= 24
 
-if h > 23:
-    h -= 24
-
-print(h, m)
+print(H, M)
