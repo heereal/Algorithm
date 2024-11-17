@@ -1,13 +1,15 @@
 N, M = map(int, input().split())
-num_list = []
+A, B = [], []
 
 for _ in range(N):
-    temp = list(map(int, input().split()))
-    num_list.append(temp)
+    row = list(map(int, input().split()))
+    A.append(row)
 
-for i in range(N):
-    temp = list(map(int, input().split()))
-    for j in range(M):
-        result = num_list[i][j] + temp[j]
-        print(result, end=" ")
+for _ in range(N):
+    row = list(map(int, input().split()))
+    B.append(row)
+
+for row in range(N):
+    for col in range(M):
+        print(A[row][col] + B[row][col], end= " ")
     print()
