@@ -1,12 +1,11 @@
 N, K = map(int, input().split())
-cnt = 0
+num_list = []
 
 for i in range(1, N+1):
     if N % i == 0:
-        cnt +=1
-    if cnt == K:
-        print(i)
-        break
+        num_list.append(i)
 
-if cnt != K:
+if len(num_list) >= K:
+    print(num_list[K-1])
+else:
     print(0)
