@@ -1,15 +1,12 @@
-while True:
-    a, b, c = map(int, input().split())
-    length_list = [a, b, c]
-    length_set = len(set(length_list))
-    
-    if a == b == c == 0:
-        break
-    elif max(length_list) >= sum(length_list) - max(length_list):
-        print('Invalid')
-    elif length_set == 1:
-        print('Equilateral')
-    elif length_set == 2:
-        print('Isosceles')
-    elif length_set == 3:
-        print('Scalene')
+while True :
+  a, b, c = map(int, input().split())
+  if a == b == c == 0 :
+    break
+  if sum((a, b, c)) - max((a, b, c)) <= max((a, b, c)) :
+    print("Invalid")
+  elif a == b == c :
+    print('Equilateral')
+  elif a == b or b == c or a == c :
+    print("Isosceles")
+  else :
+    print("Scalene")
