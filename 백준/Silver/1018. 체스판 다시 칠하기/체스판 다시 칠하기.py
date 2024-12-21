@@ -1,22 +1,27 @@
 M, N = map(int, input().split())
 board = []
-min = 64
-
-black_first = 'BWBWBWBWWBWBWBWBBWBWBWBWWBWBWBWBBWBWBWBWWBWBWBWBBWBWBWBWWBWBWBWB'
-white_first = 'WBWBWBWBBWBWBWBWWBWBWBWBBWBWBWBWWBWBWBWBBWBWBWBWWBWBWBWBBWBWBWBW'
+count = []
 
 for _ in range(M):
     board.append(input())
 
 for i in range(M-7):
     for j in range(N-7):
-        chessboard = [str[j:j+8] for str in board[i:i+8]]
-        for chess in [black_first, white_first]:
-            differ = 0
-            for k in range(64):
-                if ''.join(chessboard)[k] != chess[k]:
-                    differ += 1
-            if differ < min:
-                min = differ
+        black_first = 0
+        white_first = 0
 
-print(min)
+        for a in range(i, i+8):
+            for b in range(j, j+8):
+                if (a+b) % 2 == 0:
+                    if board[a][b] != 'W':
+                        black_first += 1
+                    elif board[a][b] != 'B':
+                        white_first += 1
+                else:
+                    if board[a][b] != 'B':
+                        black_first += 1
+                    elif board[a][b] != 'W':
+                        white_first += 1
+        count.append(min(black_first, white_first))
+
+print(min(count))
