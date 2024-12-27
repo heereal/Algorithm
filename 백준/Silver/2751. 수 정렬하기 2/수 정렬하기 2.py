@@ -8,5 +8,4 @@ for _ in range(N):
 
 num_list.sort()
 
-for i in num_list:
-    print(i)
+print(*num_list, sep='\n')
