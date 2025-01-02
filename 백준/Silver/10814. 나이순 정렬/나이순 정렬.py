@@ -10,5 +10,5 @@ for _ in range(N):
 
 li.sort(key=lambda x: int(x[0]))
 
-for member in li:
-    print(*member)
+for age, name in li:
+    print(age, name)
