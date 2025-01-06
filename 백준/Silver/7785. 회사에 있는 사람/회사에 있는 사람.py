@@ -2,14 +2,14 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-name_list = set()
+dic = {}
 
 for _ in range(n):
     name, record = input().split()
     if record == 'enter':
-        name_list.add(name)
+        dic[name] = True
     elif record == 'leave':
-        name_list.remove(name)
+        del dic[name]
 
-for name in sorted(name_list, reverse=True):
+for name in sorted(dic.keys(), reverse=True):
     print(name)
