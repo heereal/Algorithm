@@ -2,13 +2,16 @@ import sys
 input = sys.stdin.readline
 
 N, M = map(int, input().split())
-num_keys = {i+1 : input().strip() for i in range(N)}
-name_keys = {name : num for num, name in num_keys.items()}
+pokemons = {}
+
+for i in range(1, N+1):
+    name = input().strip()
+    pokemons[i] = name
+    pokemons[name] = i
 
 for _ in range(M):
     q = input().strip()
-
     if q.isalpha():
-        print(name_keys[q])
+        print(pokemons[q])
     else:
-        print(num_keys[int(q)])
+        print(pokemons[int(q)])
