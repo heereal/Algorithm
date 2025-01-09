@@ -2,18 +2,12 @@ import sys
 input = sys.stdin.readline
 
 N, M = map(int, input().split())
-dic = {input().strip() : False for _ in range(N)}
-dic = dict(sorted(dic.items()))
-cnt = 0
+a = set(input().strip() for _ in range(N))
+b = set(input().strip() for _ in range(M))
 
-for _ in range(M):
-    name = input().strip()
-    if name in dic:
-        dic[name] = True
-        cnt += 1
+result = sorted(a & b)
 
-print(cnt)
+print(len(result))
 
-for name in dic:
-    if dic[name]:
-        print(name)
+for name in result:
+    print(name)
