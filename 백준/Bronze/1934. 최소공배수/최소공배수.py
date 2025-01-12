@@ -1,7 +1,10 @@
-import math
-
 T = int(input())
 
 for _ in range(T):
-    A, B = map(int, input().split())
-    print(math.lcm(A, B))
+    a, b = map(int, input().split())
+    aa, bb = a, b
+    
+    while b > 0:
+        a, b = b, a%b
+        
+    print(aa*bb//a)
