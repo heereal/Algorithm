@@ -1,5 +1,5 @@
 N = int(input())
-paper = [[0 for _ in range(100)] for _ in range(100)]
+paper = [[0]*100 for _ in range(100)]
 
 for _ in range(N):
     X, Y = map(int, input().split())
