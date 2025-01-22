@@ -9,7 +9,7 @@ for _ in range(N):
             paper[i][j] = 1
 
 cnt = 0
-for i in range(100):
-    cnt += sum(paper[i])
+for arr in paper:
+    cnt += arr.count(1)
 
 print(cnt)
