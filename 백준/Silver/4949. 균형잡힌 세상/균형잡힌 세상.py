@@ -1,23 +1,29 @@
 while True:
-    str = input()
+    word = input()
+    stack = []
 
-    if str == ".":
+    if word == ".":
         break
+
+    for str in word:
+        if str in "([":
+            stack.append(str)
+
+        elif str == ")":
+            if stack and stack[-1] == "(":
+                stack.pop()
+            else:
+                stack.append(str)
+                break
+        
+        elif str == "]":
+            if stack and stack[-1] == "[":
+                stack.pop()
+            else:
+                stack.append(str)
+                break
     
-    li = []
-    for i in str:
-        if i in "()[]":
-            li.append(i)
-
-    s = "".join(li)
-    while True:
-
-        if s == "":
-            print("yes")
-            break
-        elif "()" not in s and "[]" not in s:
-            print("no")
-            break
-        else:
-            s = s.replace("()", "")
-            s = s.replace("[]", "")
+    if stack:
+        print("no")
+    else:
+        print("yes")
