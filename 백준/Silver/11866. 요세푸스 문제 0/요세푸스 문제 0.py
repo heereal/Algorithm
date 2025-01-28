@@ -1,18 +1,15 @@
 N, K = map(int, input().split())
-circle = [i for i in range(1, N+1)]
-idx = 0
 
-print("<", end="")
+circle = [i for i in range(1, N+1)]
+result = []
+
+idx = 0
 
 for i in range(N):
     idx += K-1
     idx = idx % len(circle)
+    
+    x = circle.pop(idx)
+    result.append(str(x))
 
-    if i == N-1:
-        print(circle[idx], end="")
-    else:
-        print(circle[idx], end=", ")
-        
-    circle.pop(idx)
-
-print(">")
+print("<" + ", ".join(result) + ">")
