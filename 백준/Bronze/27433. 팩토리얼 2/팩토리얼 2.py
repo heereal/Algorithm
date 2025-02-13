@@ -1,7 +1,9 @@
 N = int(input())
-result = 1
 
-for i in range(1, N+1):
-    result *= i
+def factorial(num):
+    if num <= 1:
+        return 1
+    else:
+        return num * factorial(num-1)
 
-print(result)
+print(factorial(N))
