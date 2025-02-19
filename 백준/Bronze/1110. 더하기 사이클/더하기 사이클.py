@@ -1,19 +1,15 @@
 N = int(input())
+num = N
+cnt = 0
 
-def cal(num, cnt):
-    str_num = str(num)
+while True:
+    a = num // 10
+    b = num % 10
+    c = (a + b) % 10
 
-    if N == num and cnt != 0:
-        return cnt
+    num = int(str(b) + str(c))
+    cnt += 1
 
-    elif num < 10:
-        num = int(str(str_num) + str(str_num)) 
-        return cal(num, cnt+1)
-
-    else:
-        li = [int(i) for i in str_num]
-        plus = sum(li)
-        num = int(str(li[-1]) + str(plus)[-1])
-        return cal(num, cnt+1)
-
-print(cal(N, 0))
+    if N == num:
+        print(cnt)
+        break
