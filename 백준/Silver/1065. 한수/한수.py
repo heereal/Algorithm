@@ -1,12 +1,10 @@
 N = int(input())
 cnt = min(99, N)
 
-for num in range(100, N+1):
-    a = num // 100
-    b = (num // 10) % 10
-    c = num % 10
-    
-    if a - b == b - c:
+for i in range(100, N+1):
+    num = list(map(int, str(i)))
+
+    if num[0] - num[1] == num[1] - num[2]:
         cnt += 1
 
 print(cnt)
