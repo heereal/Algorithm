@@ -3,6 +3,7 @@ input = sys.stdin.readline
 
 N = int(input())
 S = [list(map(int, input().split())) for _ in range(N)]
+check = [False for _ in range(N+1)]
 
 A = []
 min = 1000
@@ -20,20 +21,22 @@ def calculate_score(A, B):
 
 def backtracking(start):
     if len(A) == N//2:
-        B = [i for i in range(1, N+1) if i not in A]
+        B = [i for i in range(1, N+1) if not check[i]]
         score_a, score_b = calculate_score(A, B)
 
         global min
         if abs(score_a-score_b) < min:
             min = abs(score_a-score_b)
-            
+
         return
     
     for i in range(start, N+1):
-        if i not in A:
+        if not check[i]:
             A.append(i)
+            check[i] = True
             backtracking(i+1)
             A.pop()
+            check[i] = False
 
 backtracking(1)
 print(min)
