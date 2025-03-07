@@ -2,8 +2,8 @@ N = int(input())
 nums = list(map(int, input().split()))
 ops = list(map(int, input().split()))
 
-mx = -1e9
-mn = 1e9
+mx = -int(1e9)
+mn = int(1e9)
 
 def dfs(cnt, res):
     global mx, mn
@@ -35,5 +35,5 @@ def dfs(cnt, res):
 
 dfs(0, nums[0])
 
-print(int(mx))
-print(int(mn))
+print(mx)
+print(mn)
