@@ -11,6 +11,9 @@ while left < right:
     if abs(sum) < min:
         min = abs(sum)
         result = [nums[left], nums[right]]
+
+        if min == 0:
+            break
         
     if sum > 0:
         right -= 1
