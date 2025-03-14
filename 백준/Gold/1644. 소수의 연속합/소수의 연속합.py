@@ -16,15 +16,19 @@ for i in range(N+1):
 cnt = 0
 left, right = 0, 0
 sum = 2
+length = len(primes)
 
-while right < len(primes):
+while right < length:
     if sum == N:
         cnt += 1
-
-    if sum >= N:
+        left += 1
+        right += 1
+        if right < length:
+            sum = sum - primes[left-1] + primes[right]
+    elif sum > N:
         left += 1
         sum -= primes[left-1]
-    elif right == len(primes)-1:
+    elif right == length-1:
         break
     else:
         right += 1
