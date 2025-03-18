@@ -1,14 +1,18 @@
-def dfs(nums, target, i, res):
-    global cnt
-    
-    if i == len(nums):
-        if res == target:
-            return 1
-        else:
-            return 0
-    
-    return dfs(nums, target, i+1, res+nums[i]) + dfs(nums, target, i+1, res-nums[i])
+from collections import deque
 
 def solution(nums, target):
-    return dfs(nums, target, 0, 0)
+    queue = deque([0])
+    cnt = 0
     
+    for num in nums:
+        size = len(queue)
+        for _ in range(size):
+            res = queue.popleft()
+            queue.append(res + num)
+            queue.append(res - num)
+    
+    for res in queue:
+        if res == target:
+            cnt += 1     
+                
+    return cnt
