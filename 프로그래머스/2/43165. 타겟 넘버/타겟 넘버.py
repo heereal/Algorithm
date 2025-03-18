@@ -1,19 +1,14 @@
+def dfs(nums, target, i, res):
+    global cnt
+    
+    if i == len(nums):
+        if res == target:
+            return 1
+        else:
+            return 0
+    
+    return dfs(nums, target, i+1, res+nums[i]) + dfs(nums, target, i+1, res-nums[i])
+
 def solution(nums, target):
-    leaves = [0] # 모든 계산 결과를 담음
-    cnt = 0
-    
-    for num in nums:
-        temp = []
-        
-        for leaf in leaves:
-            temp.append(leaf + num)
-            temp.append(leaf - num)
-       
-        leaves = temp
-        
-    for leaf in leaves:
-        if leaf == target:
-            cnt += 1
-    
-    return cnt
+    return dfs(nums, target, 0, 0)
     
