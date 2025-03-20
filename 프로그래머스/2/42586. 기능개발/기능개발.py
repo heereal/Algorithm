@@ -1,24 +1,14 @@
-from collections import deque
+import math
 
 def solution(P, S):
-    P = deque(P)
-    S = deque(S)
-    
-    days = 1
-    cnt = 0
+    P = [math.ceil((100 - a) / b) for a, b in zip(P, S)]
     result = []
+    front = 0
     
-    while P:
-        if P[0] + (S[0] * days) >= 100:
-            P.popleft()
-            S.popleft()
-            cnt += 1
-        else:
-            if cnt != 0: 
-                result.append(cnt)
-                cnt = 0
-            days += 1
+    for i in range(len(P)):
+        if P[i] > P[front]:
+            result.append(i-front)
+            front = i
     
-    result.append(cnt)
-    
+    result.append(len(P) - front)
     return result
