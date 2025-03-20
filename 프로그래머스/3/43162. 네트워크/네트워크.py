@@ -1,23 +1,21 @@
-from collections import deque
-
 def solution(n, computers):
-    def bfs(i):
-        queue = deque([i])
+    def dfs(i):
+        stack = [i]
         
-        while queue:
-            node = queue.popleft()
-            visited[node] = True
+        while stack:
+            i = stack.pop()
+            visited[i] = True
             
             for j in range(n):
-                if not visited[j] and computers[j][node]:
-                    queue.append(j)
-            
+                if not visited[j] and computers[j][i]:
+                    stack.append(j)
+    
     visited = [False] * n
     cnt = 0
             
     for i in range(n):
         if not visited[i]:
-            bfs(i)
             cnt += 1
+            dfs(i)
         
     return cnt
