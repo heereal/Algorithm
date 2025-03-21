@@ -6,6 +6,9 @@ def solution(begin, target, words):
         cnt = 0
         
         for i in range(len(word)):
+            if cnt >= 2:
+                break
+                
             if word[i] != current[i]:
                 cnt += 1
                 
