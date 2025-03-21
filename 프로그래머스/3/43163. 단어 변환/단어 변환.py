@@ -2,13 +2,13 @@ def solution(begin, target, words):
     answer = int(1e9)
     visited = [False] * len(words)
     
+    if target not in words:
+        return 0
+    
     def check_word(word, current):
         cnt = 0
         
         for i in range(len(word)):
-            if cnt >= 2:
-                break
-                
             if word[i] != current[i]:
                 cnt += 1
                 
