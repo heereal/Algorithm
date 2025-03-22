@@ -1,13 +1,13 @@
 def solution(s):
     stack = []
-    
-    if s[0] == ")":
-        return False
 
     for p in list(s):
         if p == "(":
             stack.append(p)
-        elif p == ")" and stack:
-            stack.pop()
+        else:
+            try:
+                stack.pop()
+            except IndexError:
+                return False
     
-    return False if len(stack) else True
+    return len(stack) == 0
