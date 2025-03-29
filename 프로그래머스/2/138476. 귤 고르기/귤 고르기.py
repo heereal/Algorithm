@@ -1,16 +1,13 @@
+from collections import Counter
+
 def solution(k, tangerine):
-    counts = [0] * (max(tangerine) + 1)
+    answer = 0
+    counts = Counter(tangerine)
     
-    for t in tangerine:
-        counts[t] += 1
-        
-    counts.sort(reverse=True)
+    for v in sorted(counts.values(), reverse=True):
+        k -= v
+        answer += 1
+        if k <= 0:
+            break
     
-    total = 0
-    i = 0
-    
-    while total < k:
-        total += counts[i]
-        i += 1
-    
-    return i
+    return answer
