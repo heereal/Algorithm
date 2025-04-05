@@ -1,12 +1,13 @@
 def solution(wallpaper):
-    answer = [len(wallpaper), len(wallpaper[0]), 0, 0]
+    width, height = len(wallpaper[0]), len(wallpaper)
+    lux, luy, rdx, rdy = height, width, 0, 0
     
-    for i in range(len(wallpaper)):
-        for j in range(len(wallpaper[0])):
+    for i in range(height):
+        for j in range(width):
             if wallpaper[i][j] == "#":
-                answer[0] = min(answer[0], i)
-                answer[1] = min(answer[1], j)
-                answer[2] = max(answer[2], i+1)
-                answer[3] = max(answer[3], j+1)
+                lux = min(lux, i)
+                luy = min(luy, j)
+                rdx = max(rdx, i+1)
+                rdy = max(rdy, j+1)
         
-    return answer
+    return [lux, luy, rdx, rdy]
