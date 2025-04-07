@@ -1,13 +1,11 @@
 N = int(input())
 
 def dp(N):
-    memo = [0] * (N + 1)
-    memo[1] = 1
+    a, b = 1, 1 # F(1), F(2)
 
-    for i in range(2, N + 1):
-        memo[i] = memo[i-1] + memo[i-2]
+    for i in range(3, N + 1):
+        a, b = b, a + b # F(b) = F(i)
     
-    return memo[N]
+    return b
 
-print(dp(N), end=" ")
-print(N-2)
+print(dp(N), N-2)
