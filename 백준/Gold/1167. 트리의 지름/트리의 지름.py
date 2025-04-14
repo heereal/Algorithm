@@ -10,7 +10,7 @@ for _ in range(V):
     node = info[0]
 
     for i in range(1, len(info)-1, 2):
-        tree[node].append([info[i], info[i+1]])
+        tree[node].append((info[i], info[i+1]))
 
 def BFS(start):
     visited = [-1] * (V+1)
