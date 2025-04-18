@@ -1,37 +1,29 @@
 import sys
 input = sys.stdin.readline
+sys.setrecursionlimit(10**9)
 
 N, M, R = list(map(int, input().split()))
-graph = [[] for _ in range(N + 1)]
+graph = [[] for _ in range(N+1)]
 
 for _ in range(M):
     U, V = list(map(int, input().split()))
     graph[U].append(V)
     graph[V].append(U)
 
-def DFS():
-    order = [0] * (N+1)
-    cnt = 0
+def DFS(node):
+    global cnt
+    cnt += 1
 
-    stack = [R]
-    visited[R] = True
+    visited[node] = True
+    order[node] = cnt
 
-    while stack:
-        node = stack.pop()
-        visited[node] = True
+    for i in sorted(graph[node]):
+        if not visited[i]:
+            DFS(i)
 
-        if not order[node]:
-            cnt += 1
-            order[node] = cnt
+visited = [False] * (N+1)
+order = [0] * (N+1)
+cnt = 0
 
-        for i in sorted(graph[node], reverse=True):
-            if not visited[i]:
-                stack.append(i)
-
-    return order
-
-visited = [False] * (N + 1)
-order = DFS()
-
-for i in range(1, N+1):
-    print(order[i])
+DFS(R)
+print(*order[1:], sep="\n")
