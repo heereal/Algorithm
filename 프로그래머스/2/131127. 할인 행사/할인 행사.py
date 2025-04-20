@@ -1,24 +1,14 @@
+from collections import Counter
+
 def solution(want, number, discount):
     answer = 0
+    dic = {}
     
-    for i in range(10):
-        if discount[i] in want:
-            index = want.index(discount[i])
-            number[index] -= 1
+    for i in range(len(want)):
+        dic[want[i]] = number[i]
     
-    if all(x <= 0 for x in number):
+    for i in range(len(discount)-9):
+        if dic == Counter(discount[i:i+10]):
             answer += 1
-    
-    for i in range(10, len(discount)):
-        if discount[i] in want:
-            index = want.index(discount[i])
-            number[index] -= 1
-        
-        if discount[i-10] in want:
-            index = want.index(discount[i-10])
-            number[index] += 1
-        
-        if all(x <= 0 for x in number):
-            answer += 1
-            
+
     return answer
