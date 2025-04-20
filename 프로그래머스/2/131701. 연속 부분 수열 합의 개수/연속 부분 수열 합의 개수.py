@@ -1,15 +1,13 @@
-import copy
-
 def solution(el):
-    length = len(el)
-    el_sum = copy.deepcopy(el)
+    n = len(el)
+    answer = set()
     
-    answer = set(el)
-    answer.add(sum(el))
-    
-    for i in range(1, length-1):
-        for j in range(length):
-            el_sum[j] += el[(i+j) % length]
-            answer.add(el_sum[j])
-    
+    for i in range(n):
+        ssum = el[i]
+        answer.add(ssum)
+        
+        for j in range(i+1, i+n):
+            ssum += el[j % n]
+            answer.add(ssum)
+            
     return len(answer)
