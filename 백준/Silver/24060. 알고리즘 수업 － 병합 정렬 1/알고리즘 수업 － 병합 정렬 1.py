@@ -12,7 +12,6 @@ def merge_sort(arr):
     return merge(left, right)
 
 def merge(left, right):
-    global cnt, res
     merged = []
     l = r = 0
 
