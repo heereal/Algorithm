@@ -1,15 +1,11 @@
 def solution(c):
-    c.sort()
+    c.sort(reverse=True)
     answer = 0
-    i = 0
     
-    for v in range(max(c)):
-        if v > c[i]:
-            i += 1
-            
-        if len(c[i:]) >= v and len(c[:i]) <= v:
+    for v in range(1, len(c) + 1):
+        if c[v-1] >= v:
             answer = v
-        elif len(c[i:]) < v:
+        else:
             break
 
     return answer
