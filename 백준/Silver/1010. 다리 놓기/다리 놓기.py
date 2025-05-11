@@ -1,6 +1,3 @@
-import sys
-sys.setrecursionlimit(10**9)
-
 T = int(input())
 
 def factorial(n):
