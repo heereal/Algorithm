@@ -1,15 +1,13 @@
 def solution(s):
-    arr = [-1] * 26
+    dict = {}
     answer = []
     
     for i in range(len(s)):
-        j = ord(s[i]) - 97
-        
-        if arr[j] == -1:
-            answer.append(-1)
-            arr[j] = i
+        if s[i] in dict:
+            answer.append(i - dict[s[i]])
         else:
-            answer.append(i - arr[j])
-            arr[j] = i
+            answer.append(-1)
+            
+        dict[s[i]] = i
         
     return answer
