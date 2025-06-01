@@ -1,17 +1,11 @@
+from collections import Counter
+
 def solution(topping):
-    first = {topping[0]: 1}
-    second = {}
+    first = {}
+    second = Counter(topping)
     answer = 0
     
-    for n in topping[1:]:
-        if n in second:
-            second[n] += 1
-        else:
-            second[n] = 1
-    
-    for i in range(1, len(topping)):
-        n = topping[i]
-        
+    for n in topping:
         if n in first:
             first[n] += 1
         else:
