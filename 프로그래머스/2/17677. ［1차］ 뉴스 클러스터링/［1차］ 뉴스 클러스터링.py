@@ -1,3 +1,5 @@
+from collections import Counter
+
 def solution(str1, str2):
     arr1 = []
     arr2 = []
@@ -12,20 +14,14 @@ def solution(str1, str2):
         if str.isalpha():
             arr2.append(str)
     
-    set1 = set(arr1)
-    set2 = set(arr2)
+    dic1 = Counter(arr1)
+    dic2 = Counter(arr2)
     
-    intersection = set1 & set2
-    union = set1 | set2
+    intersection = (dic1 & dic2).values()
+    union = (dic1 | dic2).values()
     
-    inter_len = 0
-    union_len = 0
-    
-    for str in intersection:
-        inter_len += min(arr1.count(str), arr2.count(str))
-    
-    for str in union:
-        union_len += max(arr1.count(str), arr2.count(str))
+    inter_len = sum(intersection)
+    union_len = sum(union)
     
     if not inter_len and not union_len:
         return 65536
