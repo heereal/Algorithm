@@ -1,15 +1,12 @@
+from itertools import product
+
 def solution(word):
-    vowels = "AEIOU"
     words = []
     
-    def dfs(cnt, w):
-        if cnt == 5:
-            return
-        
-        for i in range(5):
-            words.append(w + vowels[i])
-            dfs(cnt + 1, w + vowels[i])
+    for i in range(1, 6):
+        for v in product(["A", "E", "I", "O", "U"], repeat=i):
+            words.append("".join(v))
     
-    dfs(0, "")
+    words.sort()
     
     return words.index(word) + 1
