@@ -1,21 +1,12 @@
-def gcd(a, b):
-    while b > 0:
-        a, b = b, a % b
-    return a
+from math import gcd
 
 def solution(a, b):
-    gcd_value = gcd(a, b)
-    denominator = b // gcd_value
+    b //= gcd(a, b)
     
-    primes = [2, 5]
-    cnt = 2
+    while b % 2 == 0:
+        b //= 2
     
-    while denominator > 1:
-        if denominator % cnt == 0:
-            denominator //= cnt
-            if cnt not in primes or cnt > 5:
-                return 2
-        else:
-            cnt += 1
+    while b % 5 == 0:
+        b //= 5
 
-    return 1 
+    return 1 if b == 1 else 2
