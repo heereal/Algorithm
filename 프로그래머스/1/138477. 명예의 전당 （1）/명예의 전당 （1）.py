@@ -1,18 +1,11 @@
-import heapq
-
 def solution(k, score):
     answer = []
-    heap = []
+    highest = []
         
     for s in score:
-        if len(heap) < k:
-            heapq.heappush(heap, s)
-            answer.append(min(heap))
-        else:
-            if min(heap) <= s:
-                heapq.heappushpop(heap, s)
-                answer.append(min(heap))
-            else:
-                answer.append(answer[-1])
-
+        highest.append(s)
+        if len(highest) > k:
+            highest.remove(min(highest))
+        answer.append(min(highest))
+        
     return answer
