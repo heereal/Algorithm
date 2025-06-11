@@ -1,10 +1,7 @@
 def solution(common):
-    is_plus = False
-    diff = common[1] - common[0]
+    a, b, c = common[:3]
     
-    if common[-1] == common[0] + (diff * (len(common) - 1)):
-        is_plus = True
+    if (b - a) == (c - b):
+        return common[-1] + (b - a)
     else:
-        diff = common[1] // common[0]
-    
-    return common[-1] + diff if is_plus else common[-1] * diff
+        return common[-1] * (b // a)
