@@ -1,17 +1,12 @@
 from collections import deque
 
 def solution(n, m, section):
-    answer = 0
-    queue = deque(section)
+    answer = 1
+    prev = section[0]
     
-    while queue:
-        last = queue.popleft() + m - 1
-        answer += 1
-        
-        for wall in range(len(queue)):
-            if queue[0] <= last:
-                queue.popleft()
-            else:
-                break
+    for sec in section:
+        if prev + m <= sec:
+            answer += 1
+            prev = sec
             
     return answer
