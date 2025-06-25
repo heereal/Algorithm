@@ -1,15 +1,5 @@
 def solution(lines):
-    base = [0] * 200
-    
-    for line in lines:
-        start, end = line
-        
-        for i in range(start, end):
-            if i <= 0:
-                base[abs(i)] += 1
-            else:
-                base[100+i] += 1
-
-    stacked = list(filter(lambda x: x >= 2, base))
-
-    return len(stacked)
+    s1 = set([i for i in range(lines[0][0], lines[0][1])])
+    s2 = set([i for i in range(lines[1][0], lines[1][1])])
+    s3 = set([i for i in range(lines[2][0], lines[2][1])])
+    return len((s1 & s2) | (s2 & s3) | (s1 & s3))
