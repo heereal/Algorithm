@@ -1,15 +1,11 @@
-def solution(triangle):
-    dp = [[] for _ in range(len(triangle))]
-    dp[0].append(triangle[0][0])
-    
+def solution(triangle):   
     for i in range(1, len(triangle)):
-        for j in range(len(triangle[i])):
+        for j in range(i + 1):
             if j == 0:
-                dp[i].append(dp[i-1][j] + triangle[i][j])
-            elif j == len(triangle[i]) - 1:
-                dp[i].append(dp[i-1][j-1] + triangle[i][j])
+                triangle[i][j] += triangle[i-1][j]
+            elif j == i:
+                triangle[i][j] += triangle[i-1][j-1]
             else:
-                new = max(dp[i-1][j] + triangle[i][j], dp[i-1][j-1] + triangle[i][j])
-                dp[i].append(new)
+                triangle[i][j] += max(triangle[i-1][j], triangle[i-1][j-1])
             
-    return max(dp[-1])
+    return max(triangle[-1])
