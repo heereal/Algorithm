@@ -1,9 +1,5 @@
-def solution(participant, completion):
-    participant.sort()
-    completion.sort()
+from collections import Counter
 
-    for i in range(len(completion)):
-        if participant[i] != completion[i]:
-            return participant[i]
-    
-    return participant[-1]
+def solution(participant, completion):
+    answer = Counter(participant) - Counter(completion)
+    return list(answer.keys())[0]
