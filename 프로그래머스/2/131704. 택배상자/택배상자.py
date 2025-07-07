@@ -1,19 +1,12 @@
-from collections import deque
-
 def solution(order):
-    main_first_box = 1
-    sub = []
+    stack = []
     answer = 0
     
-    for box in order:
-        if box not in sub and box >= main_first_box:
-            temp = [i for i in range(main_first_box, box + 1)]
-            sub += temp
-            main_first_box = box + 1
-
-        if sub.pop() == box:
-            answer += 1
-        else:
-            break
- 
+    for i, box in enumerate(order):
+        stack.append(i + 1)
+        
+        while stack and stack[-1] == order[answer]:
+            stack.pop()
+            answer += 1        
+        
     return answer
