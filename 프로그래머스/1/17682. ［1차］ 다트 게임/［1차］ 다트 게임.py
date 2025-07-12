@@ -1,25 +1,15 @@
+import re
+
 def solution(dartResult):
-    answer = [0, 0, 0]
-    i = 0 # 문자열 위치
-    cnt = -1 # 몇 번째 기회인지
+    bonus = {'S': 1, 'D': 2, 'T': 3}
+    option = {'': 1, '*': 2, '#': -1}
     
-    while i < len(dartResult):
-        s = dartResult[i]
-        if s.isdigit():
-            if (s + dartResult[i+1]).isdigit():
-                s += dartResult[i+1]
-                i += 1
-            cnt += 1
-            answer[cnt] = int(s)
-        elif s == 'D':
-            answer[cnt] **= 2 
-        elif s == 'T':
-            answer[cnt] **= 3
-        elif s == "*":
-            answer[cnt-1] *= 2
-            answer[cnt] *= 2
-        elif s == "#": 
-            answer[cnt] *= -1
-        i += 1
+    p = re.compile('(\d+)([SDT])([*#]?)')
+    dart = p.findall(dartResult)
+    
+    for i in range(3):
+        if dart[i][2] == '*' and i > 0:
+            dart[i-1] *= 2
+        dart[i] = int(dart[i][0]) ** bonus[dart[i][1]] * option[dart[i][2]]
                 
-    return sum(answer)
+    return sum(dart)
