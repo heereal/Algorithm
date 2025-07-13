@@ -1,15 +1,21 @@
-import re
-
 def solution(dartResult):
-    bonus = {'S': 1, 'D': 2, 'T': 3}
-    option = {'': 1, '*': 2, '#': -1}
+    dartResult = dartResult.replace('10', 'k')
+    point = [10 if i == 'k' else i for i in dartResult]
+    answer = [0, 0, 0]
     
-    p = re.compile('(\d+)([SDT])([*#]?)')
-    dart = p.findall(dartResult)
+    i = -1
+    SDT = [-1, 'S', 'D', 'T']
     
-    for i in range(3):
-        if dart[i][2] == '*' and i > 0:
-            dart[i-1] *= 2
-        dart[i] = int(dart[i][0]) ** bonus[dart[i][1]] * option[dart[i][2]]
-                
-    return sum(dart)
+    for s in point:
+        if s in SDT:
+            answer[i] **= SDT.index(s)
+        elif s == '*':
+            answer[i] *= 2
+            answer[i-1] *= 2
+        elif s == '#':
+            answer[i] *= -1
+        else:
+            i += 1
+            answer[i] = int(s)
+    
+    return sum(answer)
