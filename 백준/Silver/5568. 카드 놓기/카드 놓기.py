@@ -1,23 +1,12 @@
+from itertools import permutations
+
 n = int(input())
 k = int(input())
 
-cards = []
-visited = [False] * n
+cards = [input() for _ in range(n)]
 answer = set()
 
-for _ in range(n):
-    cards.append(input())
+for case in permutations(cards, k):
+    answer.add("".join(case))
 
-def DFS(num, cnt):
-    if cnt == k:
-        answer.add(num)
-        return
-
-    for i in range(n):
-        if not visited[i]:
-            visited[i] = True
-            DFS(num + cards[i], cnt + 1)
-            visited[i] = False
-
-DFS("", 0)
 print(len(answer))
