@@ -2,13 +2,13 @@ t = int(input())
 
 for _ in range(t):
     n = int(input())
-    arr = [1] * n
+    answer = 0
 
-    for i in range(2, n+1):
-        for j in range(i, n+1, i):
-            if arr[j-1] == 1:
-                arr[j-1] = 0
-            else:
-                arr[j-1] = 1
+    for i in range(1, n+1):
+        if i ** 2 <= n:
+            answer +=1
+        else:
+            break
     
-    print(sum(arr))
+    print(answer)
+        
