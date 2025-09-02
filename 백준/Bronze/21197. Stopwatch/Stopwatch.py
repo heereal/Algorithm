@@ -1,10 +1,12 @@
-N = int(input())
-press = [int(input()) for _ in range(N)]
+n = int(input())
 
-if N % 2 == 1:  
-    print("still running")
-else:           
-    total = 0
-    for i in range(0, N, 2):
-        total += press[i+1] - press[i]
-    print(total)
+if n % 2 != 0:
+    print('still running')
+else:
+    arr = [int(input()) for _ in range(n)]
+    seconds = 0
+
+    for i in range(1, n, 2):
+        seconds += arr[i] - arr[i-1]
+
+    print(seconds)
