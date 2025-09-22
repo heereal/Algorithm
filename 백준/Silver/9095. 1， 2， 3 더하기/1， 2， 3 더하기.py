@@ -1,0 +1,14 @@
+t = int(input())
+
+dp = [0] * 11
+dp[1] = 1
+dp[2] = 2
+dp[3] = 4
+
+for i in range(4, 11):
+    for c in [1, 2, 3]:
+        dp[i] += dp[i-c]
+
+for _ in range(t):
+    n = int(input())
+    print(dp[n])
