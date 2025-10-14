@@ -1,21 +1,10 @@
-keypad = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]]
-
-def get_row(n):
-    for i, line in enumerate(keypad):
-        if n in line:
-            return i
-
 def solution(numbers, hand):
-    keypad = [2, 5, 8, 11]
-    column = [3, 1, 2]
+    dict = {1: (1, 1), 2: (1, 2), 3: (1, 3), 4: (2, 1), 5: (2, 2), 6: (2, 3), 7: (3, 1), 8: (3, 2), 9: (3, 3), '*': (4, 1), 0: (4, 2), '#': (4, 3)}
     
-    l, r = 10, 12
+    l, r = '*', '#'
     answer = ''
     
     for n in numbers:   
-        if n == 0:
-            n = 11
-      
         if n in [1, 4, 7]:
             answer += 'L'
             l = n
@@ -23,11 +12,9 @@ def solution(numbers, hand):
             answer += 'R'
             r = n
         else:
-            next_row = keypad.index(n)
-            next_column = column[n % 3]
-            
-            left = abs(get_row(l) - next_row) + abs(column[l % 3] - next_column)
-            right = abs(get_row(r) - next_row) + abs(column[r % 3] - next_column)
+            next_row, next_column = dict[n]
+            left = abs(dict[l][0] - next_row) + abs(dict[l][1] - next_column)
+            right = abs(dict[r][0] - next_row) + abs(dict[r][1] - next_column)
             
             if left == right:
                 if hand == 'right':
