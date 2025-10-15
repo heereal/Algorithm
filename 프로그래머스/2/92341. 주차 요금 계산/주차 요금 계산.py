@@ -15,14 +15,12 @@ def solution(fees, records):
         if type == 'IN':
             cur[car] = cur_minute
         else:
-            service_minute = cur_minute - cur[car]
-            total[car] += service_minute
+            total[car] += cur_minute - cur[car]
             cur[car] = -1
     
     for car in cur:
         if cur[car] != -1:
-            service_minute = ((23 * 60) + 59) - cur[car]
-            total[car] += service_minute
+            total[car] += ((23 * 60) + 59) - cur[car]
 
         total_fee = free_fee
         if total[car] > free_time:
