@@ -12,17 +12,8 @@ for _ in range(t):
 
     for s in word:
         p_num += dic[s]
-    
-    n = len(word)
-    front = p_num[:n//2]
-    rear = ''
 
-    if n % 2 == 0:
-        rear = p_num[:(n//2)-1:-1]
-    else:
-        rear = p_num[:n//2:-1]
-
-    if front == rear:
+    if p_num == p_num[::-1]:
         print('YES')
     else:
         print('NO')
