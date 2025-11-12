@@ -27,10 +27,10 @@ def is_valid(u):
         return True
 
 def solution(p):
-    queue = deque(p)
-    if not queue:
+    if not p:
         return ""
     
+    queue = deque(p)
     s, e = 0, 0
     u = ""
 
