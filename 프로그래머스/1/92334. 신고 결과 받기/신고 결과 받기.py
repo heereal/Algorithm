@@ -1,18 +1,18 @@
 from collections import defaultdict
 
 def solution(id_list, report, k):
-    dict = defaultdict(set)
+    dict = defaultdict(int)
     
-    for r in report:
+    for r in set(report):
         a, b = r.split()
-        dict[b].add(a)
-       
+        dict[b] += 1
+ 
     answer = [0] * len(id_list)
     
-    for a in dict:
-        if len(dict[a]) >= k:
-            for b in dict[a]:
-                i = id_list.index(b)
-                answer[i] += 1
+    for r in set(report):
+        a, b = r.split()
+        if dict[b] >= k:
+            i = id_list.index(a)
+            answer[i] += 1
     
     return answer
