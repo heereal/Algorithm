@@ -1,45 +1,26 @@
-def check_is_possible(x, y, dx, dy, park):
-    is_dx_movable = True
-
-    if y != dy:
-        is_dx_movable = False
-
-    if is_dx_movable:
-        for i in range(x, dx + 1):
-            if park[i][y] == 'X':
-                return False
-    else:
-        for i in range(y, dy + 1):
-            if park[x][i] == 'X':
-                return False    
-
-    return True
-
 def solution(park, routes):
+    dirs = {'N': (-1, 0), 'S': (1, 0), 'W': (0, -1), 'E': (0, 1)}
     m, n = len(park), len(park[0])
-    cur = [0, 0]
+    answer = [0, 0]
     
     for i in range(n):
         if 'S' in park[i]:
-            cur = [i, park[i].index('S')]
+            answer = [i, park[i].index('S')]
             break
 
-    for s in routes:
-        op, d = s.split()
-        d = int(d)
-        x, y = cur[0], cur[1]
+    for route in routes:
+        dir, dist = route.split()
+        dist = int(dist)
+        x, y = answer[0], answer[1] 
         
-        if op == 'N':
-            nx, ny = x - d, y
-        elif op == 'S':
-            nx, ny = x + d, y
-        elif op == 'W':
-            nx, ny = x, y - d
-        elif op == 'E':
-            nx, ny = x, y + d
+        for i in range(1, dist + 1):
+            nx, ny = x + (dirs[dir][0] * i), y + (dirs[dir][1] * i)
+            
+            if nx < 0 or nx >= m or ny < 0 or ny >= n:
+                break
+            if park[nx][ny] == 'X':
+                break
+        else:
+            answer = [nx, ny]
         
-        if 0 <= nx < m and 0 <= ny < n:
-            if check_is_possible(min(x, nx), min(y, ny), max(x, nx), max(y, ny), park):
-                cur = [nx, ny]
-     
-    return cur
+    return answer
