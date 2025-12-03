@@ -1,17 +1,11 @@
 n = int(input())
 
-a = 2
-while True:
-    if n % a != 0:
-        print(a, end=" ")
+for i in range(2, n + 1):
+    if n % i != 0:
+        print(i, end=" ")
         break
-    else:
-        a += 1
 
-b = n - 1
-while True:
-    if n % b != 0:
-        print(b)
+for i in range(n - 1, 1, -1):
+    if n % i != 0:
+        print(i)
         break
-    else:
-        b -= 1
